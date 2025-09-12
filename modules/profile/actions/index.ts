@@ -2,6 +2,7 @@
 
 import { db } from "@/lib/db"
 import { currentUser } from "@clerk/nextjs/server"
+import { getAvailableUsernameSuggestion } from "../utils"
  
 
 export const checkProfileUsernameAvailability = async (username:string)=>{
@@ -16,7 +17,32 @@ export const checkProfileUsernameAvailability = async (username:string)=>{
         return {available:true};
     }
 
-    const suggestion = await getAvailableUsernameSuggestion(username , 3 , 10)
-    
+    const suggestions = await getAvailableUsernameSuggestion(username , 3 , 10)
+    return {
+        available:false,
+        suggestions
+    }
 }
 
+export const claimUsername = async (username:string)=>{
+    const loggedInUser = await currentUser();
+
+    if(!loggedInUser) return {
+        success: false , error: "Not authenticated user found"
+    }
+
+    const user = await db.user.update({
+        where:{
+            clerkId:loggedInUser.id
+        },
+        data:{
+            username:username
+        }
+    })
+    if(!user) return {
+        success: false , error: "Not authenticated user found"
+    }
+    return {
+        success:true
+    }
+}

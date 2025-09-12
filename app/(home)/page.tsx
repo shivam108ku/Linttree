@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { onBoardUser } from "@/modules/auth/actions";
+import ClaimLinkForm from "@/modules/home/components/claim-link-form";
 import  Link  from "next/link";
 import React from "react";
 
@@ -34,7 +35,7 @@ const HomePage = async () => {
         <section className="pb-16 md:pb-24">
           <div className="max-w-md mx-auto">
             {/* <ClaimLinkForm/> */}
-            ClaimLinkForm
+            <ClaimLinkForm/>
           </div>
         </section>
         

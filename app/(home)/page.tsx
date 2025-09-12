@@ -33,7 +33,8 @@ const HomePage = async () => {
 
         <section className="pb-16 md:pb-24">
           <div className="max-w-md mx-auto">
-            <ClaimLinkForm/>
+            {/* <ClaimLinkForm/> */}
+            ClaimLinkForm
           </div>
         </section>
         

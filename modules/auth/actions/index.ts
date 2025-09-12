@@ -2,8 +2,6 @@
 
 import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
-import clsx from "clsx";
-import { error } from "console";
 
 export const onBoardUser = async()=>{
     try {

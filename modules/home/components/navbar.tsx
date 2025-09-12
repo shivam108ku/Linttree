@@ -6,6 +6,7 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
 import { ModeToggle } from "@/components/theme-toggle";
+import UserControl from "./user-control";
 
 const NavBar = () => {
   return (
@@ -22,7 +23,7 @@ const NavBar = () => {
           <div className="flex items-center gap-4">
                 <ModeToggle/>
             <SignedIn>
-              <UserButton showName />
+              <UserControl />
             </SignedIn>
 
             <SignedOut>

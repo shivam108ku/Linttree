@@ -46,3 +46,19 @@ export const claimUsername = async (username:string)=>{
         success:true
     }
 }
+
+export const getCurrentUsername = async()=>{
+    const user = await currentUser();
+
+    const currentUsername = await db.user.findUnique({
+        where:{
+            clerkId:user?.id
+        },
+        select:{
+            username:true,
+            bio:true,
+        }
+    })
+
+    return currentUsername;
+}
